@@ -7,7 +7,7 @@ int yylex();
 void yyerror (char* s);
 
 int mem[1024];
-int reg[32];
+int reg[16];
 int instr[1024][4];
 int ip = 0;
 
