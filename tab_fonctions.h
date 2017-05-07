@@ -15,6 +15,7 @@ int del_ret();
 //Gestion fonction
 struct fonction{
 	char* id;
+	int index;
 	int adr;
 	int nbArgs;
 	int valRet;
@@ -25,8 +26,10 @@ int nbArgs;
 
 struct fonction tab_fnt[256];
 
-void ajout_fonc(char*, int);
+void ajout_fonc(char*, int, int);
+int check_exist_fonc(char*);
 int find_fonc(char*);
+int index_fonc(char*);
 void ajout_nbArgs(char*);
 
 #endif

@@ -27,15 +27,30 @@ int del_ret(){
 int fonc = 0;
 int nbArgs = 0;
 
-void ajout_fonc(char* var, int ip){
+void ajout_fonc(char* var, int ip, int nb_arg){
 	if (fonc >= 0 && fonc < 256) {
 		fonc++;
 		tab_fnt[fonc].id = var;
-		tab_fnt[fonc].adr = ip;
+		tab_fnt[fonc].index = fonc;
+		tab_fnt[fonc].adr = ip+1;
+		tab_fnt[fonc].nbArgs = nb_arg;
 	} else {
 		printf("Dépassement de la zone mémoire autorisée ! \n");
-		exit(1);
+		exit(42);
 	}
+}
+
+int check_exist_fonc(char* var){
+	int i;
+	int test = -1, trouve = 0;
+	for (i=1; i<fonc; i++) {
+		if (test = (strcmp(tab_fnt[i].id,var)==0)) {
+			printf("La fonction existe\n");
+			trouve = 1;
+			break;
+		}
+	}
+	return trouve;
 }
 
 int find_fonc(char* var){
@@ -51,11 +66,31 @@ int find_fonc(char* var){
 	if (adr != -1){
 		return adr;
 	} else {
+		printf("Pas trouvé la fonction  : %s\n", var);
+		exit(2);
+	}
+	printf("J'arrive jusque là\n");	
+}
+
+int index_fonc(char* var){
+	int i, adr = -1;
+	int test = -1;
+	for (i=1; i<fonc; i++) {
+		if (test = (strcmp(tab_fnt[i].id,var)==0)) {
+			adr = tab_fnt[i].index;
+			//printf("Youpi j'ai trouve la fonction\tadr = %d\n",adr);
+			break;
+		}
+	}
+	if (adr != -1){
+		return adr;
+	} else {
 		printf("Pas trouvé la fonction ! \n");
 		exit(2);
 	}
 	printf("J'arrive jusque là\n");	
 }
+
 
 //A MODIFIER
 void ajout_nbArgs (char* var){

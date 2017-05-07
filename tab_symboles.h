@@ -22,8 +22,10 @@ void setSym(int val);
 void ajout_sym(char*);
 void ajout_sym_init(char*);
 int find_sym(char *);	// retourne l'adresse de l'id passé en paramètre
+int find_lr(char *);
 //void del_sym();
 void ajout_init (char*);
+void print_tab_sym();
 
 //Fonctions partie temporaire
 int tmp;
